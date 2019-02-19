@@ -12,6 +12,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('servers/{server}/start', 'ServerController@start')->name('start');
         Route::get('servers/{server}/restart', 'ServerController@restart')->name('restart');
         Route::get('servers/{server}/stop', 'ServerController@stop')->name('stop');
+        
+        // BOT
+        Route::get('servers/{server}/bot', 'ServerController@bot')->name('bot');
+        
         Route::get('servers/{server}/reset', 'ServerController@resetToken')->name('reset_token');
         Route::get('servers/{server}/tokens', 'ServerController@showTokens')->name('show_tokens');
         Route::get('servers/{server}/token/{token}/delete', 'ServerController@deleteToken')->name('delete_token');

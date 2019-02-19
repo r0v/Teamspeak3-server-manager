@@ -68,6 +68,9 @@
                                 <tr>
                                     <td><a href="{{ route('servers.stop', $server) }}" class="btn btn-danger btn-block"><i class="fa fa-ban"></i> Stop</a></td>
                                 </tr>
+                                <tr>
+                                    <td><a href="{{ route('servers.bot', $server) }}" class="btn btn-dark btn-block"><i class="fa fa-volume-up"></i> Invite bot</a></td>
+                                </tr>
                             @else
                                 <tr>
                                     <td><a href="{{ route('servers.start', $server) }}" class="btn btn-success btn-block"><i class="fa fa-play"></i> Start</a></td>

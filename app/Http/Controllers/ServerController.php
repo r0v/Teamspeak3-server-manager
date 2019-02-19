@@ -218,6 +218,30 @@ class ServerController extends Controller
         return back();
     }
 
+    public function bot(Server $server)
+    {
+        try {
+
+            $host    = "localhost";
+            $port    = 12345;
+            $message = "a73b0905-81e3-4502-8c3c-96e8b12c67ba";
+            
+            $socket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Could not create socket\n");
+
+            $result = socket_connect($socket, $host, $port) or die("Could not connect to server\n");  
+            socket_write($socket, $message, strlen($message)) or die("Could not send data to server\n");
+            $result = socket_read ($socket, 1024) or die("Could not read server response\n");
+            if($result === 'b77941a1-4dd4-4ac2-90fc-f1057da48eef'){
+                echo 'Server is running';
+            } else {
+                echo 'Something went wrong!';
+            }
+
+        } catch (\Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
     public function resetToken(Server $server)
     {
         $token = (new TeamspeakHelper())->resetToken($server);
